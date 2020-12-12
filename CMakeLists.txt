@@ -1,7 +1,5 @@
 
 cmake_minimum_required(VERSION 3.16)
-set(CMAKE_CXX_COMPILER clang++)
-set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_STANDARD 17)
 include(FetchContent)
 project(fmd)
@@ -22,7 +20,7 @@ if(NOT SFML_FOUND)
     )
     FetchContent_MakeAvailable(SFML)
 endif()
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_FLAGS_RELEASE} -march=native")
+set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -DNDEBUG -march=native")
 find_package (Eigen3 3.3 QUIET)
 if (NOT TARGET Eigen3::Eigen)
     FetchContent_Declare(
